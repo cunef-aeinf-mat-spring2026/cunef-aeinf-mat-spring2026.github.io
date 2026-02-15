@@ -4,7 +4,7 @@
     <title>Tema 2.2</title>
     <meta charset="utf-8" />
     <meta name="author" content="Roi Naveiro" />
-    <script src="libs/header-attrs-2.25/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.29/header-attrs.js"></script>
     <link rel="stylesheet" href="ds_slides.css" type="text/css" />
   </head>
   <body>
@@ -125,7 +125,7 @@ Para aprender las diferentes transformaciones que podemos hacer sobre los datos,
 
 
 
-```r
+``` r
 library(tidyverse)
 library(gapminder)
 glimpse(gapminder)
@@ -164,7 +164,7 @@ Observar únicamente la variable referente a esperanza de vida (`lifeExp`)
 
 .pull-left[
 
-```r
+``` r
 gapminder %&gt;%
 * select(lifeExp)
 ```
@@ -198,7 +198,7 @@ gapminder %&gt;%
 
 .pull-left[
 
-```r
+``` r
 gapminder %&gt;%
 * select(lifeExp, country)
 ```
@@ -223,7 +223,7 @@ gapminder %&gt;%
 --
 .pull-right[ 
 
-```r
+``` r
 gapminder %&gt;%
 * select(lifeExp:gdpPercap)
 ```
@@ -248,7 +248,7 @@ gapminder %&gt;%
 
 **NOTA**: los verbos no modifican el data frames. Para guardar el output como un nuevo dataframe
 
-```r
+``` r
 esperanza_vida &lt;- gapminder %&gt;%
   select(lifeExp) 
 ```
@@ -258,7 +258,7 @@ esperanza_vida &lt;- gapminder %&gt;%
 
 .pull-left[
 
-```r
+``` r
 gapminder %&gt;%
 * select(-lifeExp, -pop, -year )
 ```
@@ -283,7 +283,7 @@ gapminder %&gt;%
 --
 .pull-right[ 
 
-```r
+``` r
 gapminder %&gt;%
 * select(-(continent:gdpPercap) )
 ```
@@ -326,7 +326,7 @@ Las siguientes funciones son útiles
 
 
 
-```r
+``` r
 gapminder %&gt;%
 * select( starts_with("co"))
 ```
@@ -355,7 +355,7 @@ gapminder %&gt;%
  `everything()` es útil para colocar ciertas variables al inicio del data frame
 
 
-```r
+``` r
 gapminder %&gt;%
 * select( year, everything() )
 ```
@@ -388,7 +388,7 @@ class: center, middle, inverse
 Para renombrar variables, utilizar `rename`
 
 
-```r
+``` r
 gapminder %&gt;%
 * rename( pais = country )
 ```
@@ -421,7 +421,7 @@ class: center, middle, inverse
 Seleccionemos país, año y esperanza de vida y ordenemos en orden **creciente** de esperanzada de vida
 
 
-```r
+``` r
 gapminder %&gt;%
 * select( country, year, lifeExp ) %&gt;%
 * arrange(lifeExp)
@@ -449,7 +449,7 @@ gapminder %&gt;%
 Seleccionemos país, año y esperanza de vida y ordenemos en orden **decreciente** de esperanzada de vida
 
 
-```r
+``` r
 gapminder %&gt;%
 * select( country, year, lifeExp ) %&gt;%
 * arrange(desc(lifeExp))
@@ -478,7 +478,7 @@ gapminder %&gt;%
 ¿Qué sucede?
 
 
-```r
+``` r
 gapminder %&gt;%
 * select( country, year, lifeExp ) %&gt;%
 * arrange(desc(country))
@@ -529,7 +529,7 @@ class: center, middle, inverse
 1. Empezamos con todo el dataset
 
 
-```r
+``` r
 *gapminder %&gt;%
   select( country, year, lifeExp ) %&gt;% 
   arrange(desc(country))  
@@ -545,7 +545,7 @@ class: center, middle, inverse
 2. Este entra en `select`, que selecciona country, year, lifeExp
 
 
-```r
+``` r
 gapminder %&gt;% 
 * select( country, year, lifeExp ) %&gt;%
   arrange(desc(country)) 
@@ -562,7 +562,7 @@ gapminder %&gt;%
 3. Por útimo, el resultado del select pasa a `arrange`
 
 
-```r
+``` r
 gapminder %&gt;% 
   select( country, year, lifeExp ) %&gt;% 
 * arrange(desc(country))
@@ -574,7 +574,7 @@ gapminder %&gt;%
 
 Pasando la respuesta a `ggplot2`
 
-```r
+``` r
 gapminder %&gt;%
   filter(year == 2007) %&gt;%
 * ggplot(., aes(x = lifeExp, fill = continent)) +
@@ -592,7 +592,7 @@ class: center, middle, inverse
 ## Seleccionar filas
 
 
-```r
+``` r
 gapminder %&gt;%
   select(country) %&gt;%
 * slice(1:3)
@@ -616,7 +616,7 @@ Cómo seleccionarías las tres últimas filas de `gapminder` usando `slice`?
 --
 
 
-```r
+``` r
 gapminder %&gt;%
 * slice( (n() - 2) : n())
 ```
@@ -637,7 +637,7 @@ gapminder %&gt;%
 También son útiles: `head()` y `tail()`
 
 
-```r
+``` r
 gapminder %&gt;%
   select(country) %&gt;%
 * head(3)
@@ -653,7 +653,7 @@ gapminder %&gt;%
 ```
 
 
-```r
+``` r
 gapminder %&gt;%
   select(country) %&gt;%
 * tail(3)
@@ -682,7 +682,7 @@ class: center, middle, inverse
 * Los argumentos reflejan las condiciones del filtrado
 
 
-```r
+``` r
 gapminder %&gt;%
 * filter(country == "Spain", lifeExp &gt; 80)
 ```
@@ -718,7 +718,7 @@ Operador    | Definición                   || Operador     | Definición
 ¿Qué está pasando?
 
 
-```r
+``` r
 sqrt(2)^2 == 2
 ```
 
@@ -728,7 +728,7 @@ sqrt(2)^2 == 2
 
 --
 
-```r
+``` r
 near(sqrt(2)^2, 2)
 ```
 
@@ -752,7 +752,7 @@ Por defecto, los múltiples argumentos de `filter` se combinan con el operador `
 Ejemplo: seleccionar países de América que en el 2007 tuvieran esperanza de vida superior a 75 o un PIB per cápita inferior a 6000
 
 
-```r
+``` r
 gapminder %&gt;%
 *   filter(year == 2007, continent == "Americas", (lifeExp &gt; 77 | gdpPercap &lt; 4000) )
 ```
@@ -787,7 +787,7 @@ class: center, middle, inverse
 * Casi todas las operaciones con NA devuelven NA
 
 
-```r
+``` r
 NA == 2
 ```
 
@@ -795,7 +795,7 @@ NA == 2
 ## [1] NA
 ```
 
-```r
+``` r
 NA + 3
 ```
 
@@ -803,7 +803,7 @@ NA + 3
 ## [1] NA
 ```
 
-```r
+``` r
 NA == NA
 ```
 
@@ -819,7 +819,7 @@ NA == NA
 * Es fácil preservarlos
 
 
-```r
+``` r
 df &lt;- tibble(x = c(1, NA, 3))
 filter(df, x &gt; 1)
 ```
@@ -831,7 +831,7 @@ filter(df, x &gt; 1)
 ## 1     3
 ```
 
-```r
+``` r
 filter(df, is.na(x) | x &gt; 1)
 ```
 
@@ -850,7 +850,7 @@ filter(df, is.na(x) | x &gt; 1)
 Podemos eliminar las filas que contengan valores ausentes en una determinada variable con `!is.na()`
 
 
-```r
+``` r
 df &lt;- tibble(x = c(1, NA, 3), y = c(NA, 2, 3))
 df %&gt;% filter(!is.na(y))
 ```
@@ -869,7 +869,7 @@ df %&gt;% filter(!is.na(y))
 Para eliminar todas las filas con valores ausentes, usar `drop_na()`
 
 
-```r
+``` r
 df &lt;- tibble(x = c(1, NA, 3), y = c(NA, 2, 3))
 df %&gt;% drop_na()
 ```
@@ -892,7 +892,7 @@ class: center, middle, inverse
 Filtrar valores únicos de filas
 
 
-```r
+``` r
 gapminder %&gt;% 
 * distinct(continent, year) %&gt;%
   arrange(continent, desc(year) )
@@ -925,7 +925,7 @@ class: center, middle, inverse
 
 .pull-left[
 
-```r
+``` r
 gapminder %&gt;% 
   filter(year == 1967) %&gt;% 
 * count(continent)
@@ -945,7 +945,7 @@ gapminder %&gt;%
 
 .pull-right[
 
-```r
+``` r
 gapminder %&gt;% 
   filter(year == 1967) %&gt;% 
 * count(continent, sort=TRUE)
@@ -968,7 +968,7 @@ gapminder %&gt;%
 ## Contar y ordenar
 
 
-```r
+``` r
 gapminder %&gt;% 
   filter(year == 1967) %&gt;% 
   count(continent) %&gt;% 
@@ -990,7 +990,7 @@ gapminder %&gt;%
 ## Contar más de una variable
 
 
-```r
+``` r
 gapminder %&gt;% 
 * count(continent, year)
 ```
@@ -1022,7 +1022,7 @@ class: center, middle, inverse
 ## Añadir nuevas columnas
 
 
-```r
+``` r
 gapminder %&gt;%
   mutate(gdp = gdpPercap * pop) %&gt;%
   filter(year == 2007) %&gt;%
@@ -1073,7 +1073,7 @@ Múltiples funciones útiles para añadir columnas
 ## Ejemplos
 
 
-```r
+``` r
 x = c(1,3,2,7,6)
 min_rank(x)
 ```
@@ -1082,7 +1082,7 @@ min_rank(x)
 ## [1] 1 3 2 5 4
 ```
 
-```r
+``` r
 33 %% 10
 ```
 
@@ -1090,7 +1090,7 @@ min_rank(x)
 ## [1] 3
 ```
 
-```r
+``` r
 cumsum(x)
 ```
 
@@ -1108,7 +1108,7 @@ class: center, middle, inverse
 ## Creación de estadísticos de resumen
 
 
-```r
+``` r
 gapminder %&gt;%
   filter(year == 1967) %&gt;%
   summarise(mean_gdpPerCapita = mean(gdpPercap))
@@ -1150,7 +1150,7 @@ class: center, middle, inverse
 Esto permite obtener estadísticos de resumen para diferentes grupos
 
 
-```r
+``` r
 gapminder %&gt;%
   filter(year == 1967) %&gt;%
   group_by(continent) %&gt;%
@@ -1173,7 +1173,7 @@ gapminder %&gt;%
 ## Agrupaciones
 
 
-```r
+``` r
 gapminder %&gt;%
   filter(year == 1967) %&gt;%
   group_by(continent) %&gt;%
@@ -1203,7 +1203,7 @@ gapminder %&gt;%
 Fíjate que al hacer un summarise se deshace el agrupamiento según la última variable indicada en group_by
 
 
-```r
+``` r
 gapminder %&gt;%
   group_by(continent, year) %&gt;%
   summarise(
@@ -1238,7 +1238,7 @@ gapminder %&gt;%
 Para desagrupar completamente podemos usar `ungroup()`
 
 
-```r
+``` r
 # Agrupamos por una columna
 gapminder_g &lt;- gapminder %&gt;% 
   group_by(continent)
@@ -1263,7 +1263,7 @@ gapminder_g %&gt;% head(2)
 Para desagrupar completamente podemos usar `ungroup()`
 
 
-```r
+``` r
 # Desagrupamos el dataframe
 gampminder_ng &lt;- gapminder %&gt;% 
   ungroup()
@@ -1286,7 +1286,7 @@ gampminder_ng %&gt;% head(2)
 ¿Cuál es la diferencia entre estas dos formas de contar?
 
 
-```r
+``` r
 library(palmerpenguins)
 
 penguins %&gt;%
@@ -1314,7 +1314,7 @@ penguins %&gt;%
 ¿Cuál es la diferencia entre estas dos formas de contar?
 
 
-```r
+``` r
 penguins %&gt;% 
   count(species, island)
 ```
@@ -1336,7 +1336,7 @@ penguins %&gt;%
 ¿Qué sucede?
 
 
-```r
+``` r
 penguins %&gt;%
   group_by(species, island) %&gt;%
   summarise(count = n()) %&gt;%
@@ -1362,7 +1362,7 @@ penguins %&gt;%
 ¿Qué sucede?
 
 
-```r
+``` r
 penguins %&gt;% 
   count(species, island) %&gt;%
   mutate(prop = n / sum(n))
@@ -1400,10 +1400,10 @@ Para cada continente, calcula la proporción de países que en el año 1967 ten�
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightLines": true,
-"highlightStyle": "github",
-"countIncrementalSlides": false,
-"slideNumberFormat": "%current%"
+  "highlightLines": true,
+  "highlightStyle": "github",
+  "countIncrementalSlides": false,
+  "slideNumberFormat": "%current%"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
