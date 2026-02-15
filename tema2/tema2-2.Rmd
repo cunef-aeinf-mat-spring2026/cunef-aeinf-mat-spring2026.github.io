@@ -758,7 +758,7 @@ gapminder_g <- gapminder %>%
   group_by(continent)
 
 
-gapminder_g %>% head(2)
+gapminder_g %>% slice(1)
 ```
 
 ---
@@ -772,7 +772,22 @@ Para desagrupar completamente podemos usar `ungroup()`
 gampminder_ng <- gapminder %>% 
   ungroup()
 
-gampminder_ng %>% head(2)
+gampminder_ng %>% slice(1)
+```
+
+---
+
+## Agrupaciones
+
+Ojo:
+
+```{r}
+# Agrupamos por una columna
+gapminder_g <- gapminder %>% 
+  group_by(continent)
+
+
+gapminder_g %>% head(1)
 ```
 
 ---

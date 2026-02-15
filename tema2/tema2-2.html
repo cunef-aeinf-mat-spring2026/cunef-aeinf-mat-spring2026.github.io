@@ -1244,16 +1244,19 @@ gapminder_g &lt;- gapminder %&gt;%
   group_by(continent)
 
 
-gapminder_g %&gt;% head(2)
+gapminder_g %&gt;% slice(1)
 ```
 
 ```
-## # A tibble: 2 × 6
-## # Groups:   continent [1]
-##   country     continent  year lifeExp     pop gdpPercap
-##   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;
-## 1 Afghanistan Asia       1952    28.8 8425333      779.
-## 2 Afghanistan Asia       1957    30.3 9240934      821.
+## # A tibble: 5 × 6
+## # Groups:   continent [5]
+##   country     continent  year lifeExp      pop gdpPercap
+##   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+## 1 Algeria     Africa     1952    43.1  9279525     2449.
+## 2 Argentina   Americas   1952    62.5 17876956     5911.
+## 3 Afghanistan Asia       1952    28.8  8425333      779.
+## 4 Albania     Europe     1952    55.2  1282697     1601.
+## 5 Australia   Oceania    1952    69.1  8691212    10040.
 ```
 
 ---
@@ -1268,15 +1271,38 @@ Para desagrupar completamente podemos usar `ungroup()`
 gampminder_ng &lt;- gapminder %&gt;% 
   ungroup()
 
-gampminder_ng %&gt;% head(2)
+gampminder_ng %&gt;% slice(1)
 ```
 
 ```
-## # A tibble: 2 × 6
+## # A tibble: 1 × 6
 ##   country     continent  year lifeExp     pop gdpPercap
 ##   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;
 ## 1 Afghanistan Asia       1952    28.8 8425333      779.
-## 2 Afghanistan Asia       1957    30.3 9240934      821.
+```
+
+---
+
+## Agrupaciones
+
+Ojo:
+
+
+``` r
+# Agrupamos por una columna
+gapminder_g &lt;- gapminder %&gt;% 
+  group_by(continent)
+
+
+gapminder_g %&gt;% head(1)
+```
+
+```
+## # A tibble: 1 × 6
+## # Groups:   continent [1]
+##   country     continent  year lifeExp     pop gdpPercap
+##   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;
+## 1 Afghanistan Asia       1952    28.8 8425333      779.
 ```
 
 ---
