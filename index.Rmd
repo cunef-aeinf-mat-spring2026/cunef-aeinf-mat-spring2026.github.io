@@ -58,11 +58,12 @@ Bienvenido al sitio web de la asignatura de **Análisis y Explotación de la Inf
   - 3.1: Importación de datos
     - [Diapositivas](./tema3/tema3-1.html)
   
-<!--
+
 
   - 3.2: Organización de datos
     - [Diapositivas](./tema3/tema3-2.html)
 
+<!--
  
   - 3.3: Transformación de datos
     - [Diapositivas](./tema3/tema3-3.html)
@@ -97,11 +98,12 @@ Bienvenido al sitio web de la asignatura de **Análisis y Explotación de la Inf
 ### Lab 3.1 - Importación
   - [Ejercicios](./labs/lab4.html)
 
-<!--
 
 ### Lab 3.2 - Data Wrangling
   - [Ejercicios](./labs/lab5.html)
 
+
+<!--
 
 ### Lab 3.3 - Strings, Factores y Fechas
   - [Ejercicios](./labs/lab6.html)
